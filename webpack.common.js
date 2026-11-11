@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './client/index.jsx',
@@ -6,6 +7,11 @@ module.exports = {
     extensions: ['.js', '.jsx', '.css'],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.API_URL': JSON.stringify(
+        process.env.API_URL || process.env.REACT_APP_API_URL || ''
+      ),
+    }),
     new HtmlWebpackPlugin({
       template: './client/index.html',
     }),

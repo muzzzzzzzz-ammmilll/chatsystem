@@ -50,8 +50,8 @@ function App() {
   useEffect(() => {
     const abortCtrl = new AbortController();
     // set default base url
-    axios.defaults.baseURL = config.isDev
-      ? 'http://localhost:8080/api'
+    axios.defaults.baseURL = config.apiUrl
+      ? `${config.apiUrl.replace(/\/$/, '')}/api`
       : '/api';
     handleGetMaster(abortCtrl.signal);
 
