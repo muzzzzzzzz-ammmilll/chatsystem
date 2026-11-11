@@ -5,7 +5,7 @@
   "main": "server/index.js",
   "private": true,
   "engines": {
-    "node": ">=20.0.0"
+    "node": "20.x"
   },
   "scripts": {
     "dev:client": "webpack serve --config ./webpack.dev.js",

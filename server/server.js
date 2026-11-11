@@ -1,3 +1,10 @@
+// Polyfill SlowBuffer for newer Node runtimes (Node 22+) where legacy SlowBuffer was removed
+const buffer = require('buffer');
+if (!buffer.SlowBuffer) {
+  buffer.SlowBuffer = function SlowBuffer() {};
+  buffer.SlowBuffer.prototype = buffer.Buffer.prototype;
+}
+
 require('dotenv').config({ path: './.env' });
 
 const express = require('express');
