@@ -6,8 +6,8 @@ import config from '../../config';
 
 const TERMS = [
   {
-    title: 'Using WP Messager',
-    body: 'WP Messager is a project prototype for realtime conversations. Keep your login details private and only share content you have the right to share.',
+    title: 'Using MZ chat',
+    body: 'MZ chat is a realtime messaging workspace. Keep your login details private and only share content you have the right to share.',
   },
   {
     title: 'Your data',
@@ -30,7 +30,7 @@ const LICENSES = [
   { name: 'Socket.IO', license: 'MIT' },
   { name: 'Tailwind CSS', license: 'MIT' },
   { name: 'React Icons', license: 'MIT' },
-  { name: 'WP Messager', license: 'GPL-3.0' },
+  { name: 'MZ chat', license: 'GPL-3.0' },
 ];
 
 function Feedback() {
@@ -116,7 +116,7 @@ function InfoModal() {
   const meta = {
     feedback: {
       title: 'Send feedback',
-      subtitle: 'Help shape the next version of WP Messager.',
+      subtitle: 'Help shape the next version of MZ chat.',
       icon: <bi.BiMessageDetail />,
     },
     terms: {

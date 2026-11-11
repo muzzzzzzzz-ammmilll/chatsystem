@@ -9,10 +9,11 @@ import { setMaster, setSetting } from './redux/features/user';
 import socket from './helpers/socket';
 import config from './config';
 import { getSetting } from './api/services/setting.api';
+import { BrandMark } from './components/brand';
 
 function App() {
   const dispatch = useDispatch();
-  const { master } = useSelector((state) => state.user);
+  const { master, setting } = useSelector((state) => state.user);
 
   const [inactive, setInactive] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -26,10 +27,10 @@ function App() {
         // set default authorization
         axios.defaults.headers.Authorization = `Bearer ${token}`;
         // get account setting
-        const setting = await getSetting({ signal });
+        const accountSetting = await getSetting({ signal });
 
-        if (setting) {
-          dispatch(setSetting(setting));
+        if (accountSetting) {
+          dispatch(setSetting(accountSetting));
 
           const { data } = await axios.get('/users', { signal });
           // set master
@@ -66,6 +67,13 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // Keep documentElement and body in sync with light/dark theme preference
+    const isDark = Boolean(setting?.dark);
+    document.documentElement.classList.toggle('dark', isDark);
+    document.body.classList.toggle('dark', isDark);
+  }, [setting?.dark]);
+
+  useEffect(() => {
     document.onvisibilitychange = (e) => {
       if (master) {
         const active = e.target.visibilityState === 'visible';
@@ -90,12 +98,13 @@ function App() {
           )}
         </Routes>
       ) : (
-        <div className="absolute w-full h-full flex justify-center items-center bg-white dark:text-white/90 dark:bg-spill-900">
-          <div className="flex gap-2 items-center">
-            <i className="animate-spin">
-              <bi.BiLoaderAlt />
+        <div className="absolute w-full h-full flex flex-col justify-center items-center bg-spill-50 text-ink-900 dark:text-white/90 dark:bg-spill-900 gap-4">
+          <BrandMark size={52} className="animate-pulse" />
+          <div className="flex gap-2 items-center text-sm font-semibold text-spill-600">
+            <i className="animate-spin text-burgundy-700">
+              <bi.BiLoaderAlt size={18} />
             </i>
-            <p>Loading</p>
+            <p>Loading MZ chat...</p>
           </div>
         </div>
       )}

@@ -161,7 +161,11 @@ function Send({ setChats, setNewMessage, control }) {
         />
         <button
           type="submit"
-          className="p-2 rounded-full hover:bg-spill-100 dark:hover:bg-spill-800"
+          className={`p-2 rounded-full transition ${
+            form.text.length > 0
+              ? 'text-white bg-burgundy-700 hover:bg-burgundy-800'
+              : 'hover:bg-spill-100 dark:hover:bg-spill-800 text-spill-500'
+          }`}
           onClick={(e) => {
             if (form.text.length > 0) {
               handleSubmit(e);
@@ -169,7 +173,7 @@ function Send({ setChats, setNewMessage, control }) {
           }}
         >
           <i>
-            <bi.BiSend />
+            <bi.BiSend size={20} />
           </i>
         </button>
       </div>

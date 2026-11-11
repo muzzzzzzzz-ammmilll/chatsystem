@@ -2,26 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lobster+Two:wght@700&display=swap');
 
 * {
   border: none;
   outline: none;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
   user-select: none;
+  background-color: #FAF7F8;
+  color: #170E11;
 }
 
 input:-webkit-autofill {
-  transition: 'color 9999s ease-out, background-color 9999s ease-out';
+  transition: color 9999s ease-out, background-color 9999s ease-out;
   transition-delay: 9999s;
 }
 
 svg {
   font-size: x-large;
 }
+
 input,
 textarea {
   background: transparent;
@@ -29,8 +32,57 @@ textarea {
 
 a {
   text-decoration: underline;
-  color: #0c4a6e;
+  color: #800020;
 }
+
+a:hover {
+  color: #67031C;
+}
+
 .dark a {
-  color: #bae6fd;
+  color: #F7CDD5;
+}
+
+/* Burgundy branding utilities */
+.brand-gradient {
+  background: linear-gradient(135deg, #800020 0%, #A61C40 50%, #67031C 100%);
+}
+
+.brand-gradient-subtle {
+  background: linear-gradient(135deg, #FDF2F4 0%, #FBE6EA 100%);
+}
+
+.shadow-soft {
+  box-shadow: 0 4px 18px -2px rgba(128, 0, 32, 0.22), 0 2px 6px -1px rgba(128, 0, 32, 0.12);
+}
+
+.shadow-burgundy-sm {
+  box-shadow: 0 2px 8px -1px rgba(128, 0, 32, 0.18);
+}
+
+/* Custom scrollbars with burgundy hint */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E8DFE2;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D5C7CB;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #3D2E34;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #5C4B52;
 }

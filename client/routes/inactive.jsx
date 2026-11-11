@@ -4,7 +4,7 @@ import config from '../config';
 
 function Inactive() {
   return (
-    <div className="absolute w-full h-full flex justify-center items-center bg-spill-100 dark:text-white dark:bg-spill 900">
+    <div className="absolute w-full h-full flex justify-center items-center bg-spill-100 dark:text-white dark:bg-spill-900">
       <Helmet>
         <title>{`${config.brandName} [inactive]`}</title>
         <link

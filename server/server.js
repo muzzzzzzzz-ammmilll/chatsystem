@@ -8,7 +8,6 @@ const cors = require('cors');
 const routes = require('./routes');
 const config = require('./config');
 const db = require('./db/connect');
-const cloudinary = require('./middleware/cloudinary');
 
 const app = express();
 const server = http.createServer(app);
@@ -24,9 +23,6 @@ app.use(
   })
 );
 
-cloudinary();
-db();
-
 app.use('/api', routes);
 
 if (!config.isDev) {
@@ -40,4 +36,5 @@ if (!config.isDev) {
 global.io = new SocketServer(server, { cors: config.cors });
 require('./socket');
 
-module.exports = server;
+// Export a boot function so index.js can await the database before listening.
+module.exports = { server, db };

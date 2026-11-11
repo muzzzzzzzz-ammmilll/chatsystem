@@ -8,6 +8,7 @@ import socket from '../../helpers/socket';
 import config from '../../config';
 
 import * as comp from '../../components/chat/room';
+import { BrandMark } from '../../components/brand';
 import FriendProfile from '../../pages/friendProfile';
 import GroupProfile from '../../pages/groupProfile';
 import GroupParticipant from '../../pages/groupParticipant';
@@ -142,15 +143,14 @@ function Room() {
         </>
       )}
       {!chatRoom.data && (
-        <div className="w-full h-full flex justify-center items-center">
-          <div className="w-[400px] flex flex-col items-center">
-            <i className="opacity-40">
-              <md.MdDevices size={140} />
-            </i>
-            <p className="mt-4 opacity-60 text-center">
-              {'You can use '}
-              {config.brandName}
-              {' on other devices such as desktop, tablet, and mobile phone.'}
+        <div className="w-full h-full flex justify-center items-center bg-spill-50/60 dark:bg-spill-950">
+          <div className="w-[420px] flex flex-col items-center text-center p-6">
+            <BrandMark size={64} className="mb-4" />
+            <h2 className="text-xl font-bold font-display text-ink-900 dark:text-white">
+              MZ <span className="text-burgundy-700 dark:text-burgundy-400">chat</span>
+            </h2>
+            <p className="mt-2 text-sm text-spill-500 leading-relaxed">
+              Send and receive messages in realtime. Select a chat from the sidebar to start a conversation.
             </p>
           </div>
         </div>
